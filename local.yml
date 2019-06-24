@@ -1,0 +1,7 @@
+applications:
+- name: vault-service-broker
+  buildpacks:
+  - https://github.com/cloudfoundry/go-buildpack#v1.8.41
+  env:
+    GOPACKAGENAME: github.com/hashicorp/vault-service-broker
+  memory: 256m

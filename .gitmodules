@@ -1,0 +1,3 @@
+[submodule "vault-service-broker"]
+	path = vault-service-broker
+	url = https://github.com/hashicorp/vault-service-broker.git
