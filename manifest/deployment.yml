@@ -42,6 +42,6 @@ spec:
               key: password
         resources:
           limits:
-            memory: "256Mi"
-          requests:
             memory: "32Mi"
+          requests:
+            memory: "16Mi"
