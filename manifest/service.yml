@@ -5,13 +5,6 @@ metadata:
   namespace: vault-broker
   labels:
     app: vault-broker
-  annotations:
-    spring.cloud.gateway/routes: |
-      predicates:
-      - Host=vault-broker.k8s.bosh.tokyo
-      filters:
-      - RequestLogging=
-      - PreserveHostHeader=
 spec:
   selector:
     app: vault-broker
