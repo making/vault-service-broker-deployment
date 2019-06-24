@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vault-broker
+  namespace: vault-broker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vault-broker
+  template:
+    metadata:
+      labels:
+        app: vault-broker
+    spec:
+      containers:
+      - image: making/vault-service-broker
+        name: vault-broker
+        ports:
+        - containerPort: 8080
+        env:
+        - name: VAULT_ADDR
+          valueFrom:
+            secretKeyRef:
+              name: vault-broker
+              key: vault-addr
+        - name: VAULT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: vault-broker
+              key: vault-token
+        - name: SECURITY_USER_NAME
+          valueFrom:
+            secretKeyRef:
+              name: vault-broker
+              key: username
+        - name: SECURITY_USER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: vault-broker
+              key: password
+        resources:
+          limits:
+            memory: "256Mi"
+          requests:
+            memory: "32Mi"
